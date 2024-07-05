@@ -1,31 +1,15 @@
-let daysItem = document.querySelector("#days");
-let hoursItem = document.querySelector("#hours");
-let minItem = document.querySelector("#min");
-let secItem = document.querySelector("#sec");
+//selector
+let color1 = document.querySelector(".color1");
+let color2 = document.querySelector(".color2");
+let css = document.querySelector("h3");
+let body = document.getElementById("gradiant");
 
-let countDown = () => {
-    let futureDate = new Date("31 July 2024 10:38 pm");
-    let currentDate = new Date();
-    let myDate= futureDate - currentDate;
-
-    if (myDate<0){
-        return
-    }
-    else{
-
-    
-    let days = Math.floor(myDate/1000/60/60/24);
-    let hours = Math.floor(myDate/1000/60/60)%24;
-    let min = Math.floor(myDate/1000/60)%60;
-    let sec = Math.floor(myDate/1000)%60;
-
-    daysItem.innerHTML=days;
-    hoursItem.innerHTML=hours;
-    minItem.innerHTML=min;
-    secItem.innerHTML=sec;
-    }
+//function
+function gradiantChange(){
+    body.style.background = "linear-gradient(to right ," + color1.value + "," + color2.value + ")";
+    css.textContent = body.style.background + ";";
 }
 
-countDown()
-
-setInterval(countDown,1000)
+//ADD EVENT LISTENER
+color1.addEventListener("input", gradiantChange);
+color2.addEventListener("input", gradiantChange);
